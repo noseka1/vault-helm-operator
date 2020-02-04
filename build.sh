@@ -25,6 +25,10 @@ cp templates/* $OPERATOR_NAME/helm-charts/vault/templates
 
 pushd $OPERATOR_NAME
 
+sed deploy/operator.yaml \
+  --expression "s#REPLACE_IMAGE#$OPERATOR_IMAGE_REPO#" \
+  --in-place
+
 operator-sdk build $OPERATOR_IMAGE_REPO \
   --image-builder $OPERATOR_IMAGE_BUILDER
 
