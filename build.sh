@@ -17,11 +17,11 @@ OPERATOR_REGISTRY_IMAGE_REPO=$IMAGE_REPO/$OPERATOR_NAME-registry
 git clone $OPERATOR_SOURCE_REPO \
   --branch $OPERATOR_SOURCE_REF
 
+cp templates/* $OPERATOR_SOURCE_DIR/templates
+
 operator-sdk new $OPERATOR_NAME \
   --type helm \
   --helm-chart $OPERATOR_SOURCE_DIR
-
-cp templates/* $OPERATOR_NAME/helm-charts/vault/templates
 
 pushd $OPERATOR_NAME
 
