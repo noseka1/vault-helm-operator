@@ -57,8 +57,3 @@ podman build \
 podman push $OPERATOR_REGISTRY_IMAGE_REPO
 
 popd
-
-sed vault-helm-operator-catalogsource.yaml.in \
-  --expression "s#@@OPERATOR_NAME@@#$OPERATOR_NAME#" \
-  --expression "s#@@OPERATOR_REGISTRY_IMAGE_REPO@@#$OPERATOR_REGISTRY_IMAGE_REPO#" \
-  > vault-helm-operator-catalogsource.yaml

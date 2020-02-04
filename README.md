@@ -14,5 +14,11 @@ Scripts in this repository can build a Helm operator for deploying HashiCorp Vau
 Modify [script.sh](script.sh) to fit your needs. Run the script:
 
 ```
-./script.sh
+$ ./script.sh
+```
+
+Deploy the operator on OpenShift and create a vault instance:
+
+```
+$ oc apply --kustomize deploy
 ```

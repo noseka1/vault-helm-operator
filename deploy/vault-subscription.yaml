@@ -1,0 +1,11 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: vault
+  namespace: vault
+spec:
+  channel: stable
+  installPlanApproval: Automatic
+  name: vault-helm-operator
+  source: vault-helm-operator
+  sourceNamespace: openshift-marketplace

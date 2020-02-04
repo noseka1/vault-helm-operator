@@ -1,10 +1,10 @@
 apiVersion: operators.coreos.com/v1alpha1
 kind: CatalogSource
 metadata:
-  name: @@OPERATOR_NAME@@
+  name: vault-helm-operator
   namespace: openshift-marketplace
 spec:
   sourceType: grpc
-  image: @@OPERATOR_REGISTRY_IMAGE_REPO@@
+  image: quay.io/noseka1/vault-helm-operator-registry
   displayName: Vault Helm Operator
   publisher: Community
