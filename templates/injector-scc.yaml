@@ -1,0 +1,34 @@
+allowHostDirVolumePlugin: false
+allowHostIPC: false
+allowHostNetwork: false
+allowHostPID: false
+allowHostPorts: false
+allowPrivilegeEscalation: true
+allowPrivilegedContainer: false
+allowedCapabilities: []
+apiVersion: security.openshift.io/v1
+defaultAddCapabilities: []
+fsGroup:
+  type: RunAsAny
+kind: SecurityContextConstraints
+metadata:
+  name: {{ template "vault.fullname" . }}-agent-injector
+priority: 10
+readOnlyRootFilesystem: false
+requiredDropCapabilities:
+- MKNOD
+runAsUser:
+  type: MustRunAsNonRoot
+seLinuxContext:
+  type: MustRunAs
+supplementalGroups:
+  type: RunAsAny
+users:
+- system:serviceaccount:{{ .Release.Namespace }}:{{ template "vault.fullname" . }}-agent-injector
+volumes:
+- configMap
+- downwardAPI
+- emptyDir
+- persistentVolumeClaim
+- projected
+- secret
