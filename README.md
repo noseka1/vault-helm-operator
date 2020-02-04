@@ -11,10 +11,10 @@ Scripts in this repository can build a Helm operator for deploying HashiCorp Vau
 
 ## Building the Operator
 
-Modify [script.sh](script.sh) to fit your needs. Run the script:
+Modify [build.sh](build.sh) to fit your needs. Run the script:
 
 ```
-$ ./script.sh
+$ ./build.sh
 ```
 
 Deploy the operator on OpenShift and create a vault instance:
