@@ -14,9 +14,6 @@ OPERATOR_IMAGE_REPO=$IMAGE_REPO/$OPERATOR_NAME
 OPERATOR_BUNDLE_IMAGE_REPO=$IMAGE_REPO/$OPERATOR_NAME-bundle
 OPERATOR_REGISTRY_IMAGE_REPO=$IMAGE_REPO/$OPERATOR_NAME-registry
 
-# The 1.5.6 image works with opm 1.5.8, images 1.5.7 and 1.5.8 don't work
-REGISTRY_BUILDER_IMAGE_REPO=quay.io/operator-framework/upstream-registry-builder:v1.5.6
-
 git clone $OPERATOR_SOURCE_REPO \
   --branch $OPERATOR_SOURCE_REF
 
@@ -45,8 +42,17 @@ podman push $OPERATOR_BUNDLE_IMAGE_REPO
 
 opm index add \
   --bundles $OPERATOR_BUNDLE_IMAGE_REPO \
+  --generate
+
+sed index.Dockerfile \
+  --expression "s#/build/bin/opm#/build/bin/linux-amd64-opm#" \
+  --expression "\$aUSER 1001" \
+  > index.Dockerfile.fixed
+
+podman build \
+  --file index.Dockerfile.fixed \
   --tag $OPERATOR_REGISTRY_IMAGE_REPO \
-  --binary-image $REGISTRY_BUILDER_IMAGE_REPO
+  .
 
 podman push $OPERATOR_REGISTRY_IMAGE_REPO
 
