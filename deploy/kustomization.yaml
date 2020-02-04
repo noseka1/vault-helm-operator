@@ -3,6 +3,5 @@ kind: Kustomization
 
 resources:
 - vault-helm-operator-catalogsource.yaml
-- vault-namespace.yaml
 - vault-operatorgroup.yaml
 - vault-subscription.yaml
