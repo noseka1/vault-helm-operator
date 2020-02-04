@@ -2,7 +2,7 @@
 
 Scripts in this repository can build a Helm operator for deploying HashiCorp Vault on OpenShift. The operator is built using [operator-sdk](https://github.com/operator-framework/operator-sdk) and [official Vault Helm chart](https://github.com/hashicorp/vault-helm).
 
-## Required Tools
+## Requirements
 
 * git
 * operator-sdk
