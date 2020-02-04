@@ -1,3 +1,4 @@
+# allow to run as anyuid
 allowHostDirVolumePlugin: false
 allowHostIPC: false
 allowHostNetwork: false
