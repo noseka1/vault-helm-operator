@@ -20,5 +20,13 @@ $ ./build.sh
 Deploy the operator on OpenShift and create a vault instance:
 
 ```
+$ oc new-project vault
 $ oc apply --kustomize deploy
+$ oc apply --filename vault-helm-operator/deploy/crds/charts.helm.k8s.io_v1alpha1_vault_cr.yaml
+```
+
+Optionally, create a TLS edge-terminated route:
+
+```
+$ oc create route edge vault --port 8200 --service example-vault
 ```
