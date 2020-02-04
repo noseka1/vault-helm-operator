@@ -48,6 +48,8 @@ opm index add \
   --tag $OPERATOR_REGISTRY_IMAGE_REPO \
   --binary-image $REGISTRY_BUILDER_IMAGE_REPO
 
+podman push $OPERATOR_REGISTRY_IMAGE_REPO
+
 popd
 
 sed vault-helm-operator-catalogsource.yaml.in \
