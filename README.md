@@ -40,7 +40,7 @@ $ oc create route edge vault --port 8200 --service example-vault
 
 ## Cleaning up
 
-Sometimes global resources don't get clean up properly. Delete them with this command:
+Sometimes global resources don't get cleaned up properly. Delete them with this command:
 
 ```
 $ oc delete \
